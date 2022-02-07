@@ -1,0 +1,59 @@
+---
+title: "Iris"
+author: "Brenden Latham"
+date: "1/13/2022"
+output: rmarkdown::github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# The Iris Dataset
+
+## Brenden Latham
+
+```{r, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+```
+
+
+```{r}
+df <- read.csv('https://raw.githubusercontent.com/nurfnick/Data_Viz/main/iris.csv')
+head(df)
+```
+
+```{r}
+df_class <- df %>% select('Class')
+ggplot2::ggplot(data=plyr::count(df), aes(x=Class)) + geom_bar()
+```
+
+```{r}
+table(df$Class)
+```
+
+```{r}
+ggplot2::ggplot(data=df,aes(x=PedalWidth)) + geom_histogram(bins=25)
+```
+
+```{r}
+ggplot2::ggplot(data=df,aes(y=PedalWidth, color=Class)) + geom_boxplot()
+```
+
+```{r}
+ggplot2::ggplot(data=df,aes(x=Class, y=PedalWidth, color=Class)) + geom_violin()
+```
+
+```{r}
+min(df$PedalWidth)
+```
+
+```{r}
+mean(df$PedalWidth)
+```
+
+```{r}
+max(df$PedalWidth)
+```
+
